@@ -1,10 +1,15 @@
 html {
-  font-size: 62.5%;
+  font-size: 50%;
 }
 
 body {
   background: $background-color;
   font-size: $size-m;
-
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+@media (min-width: $desktop-breakpoint) {
+  html {
+    font-size: 62.5%;
+  }
 }

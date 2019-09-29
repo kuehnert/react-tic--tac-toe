@@ -8,9 +8,9 @@ $border-color: darken($neutral-color, 20%);
 $message-color: #eee;
 
 // Sizes and spacing
-$size-s: 0.8rem;
-$size-m: 1.2rem;
+$size-m: 1.6rem;
+$size-s: $size-m / 2;
 $size-l: $size-m * 2;
 $size-xl: $size-m * 3;
-$size-tile-label: $size-m * 10;
+$size-tile-label: 14vw;
 $desktop-breakpoint: 800px;

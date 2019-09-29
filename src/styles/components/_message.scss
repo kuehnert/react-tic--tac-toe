@@ -1,11 +1,9 @@
 .message {
-  width: 75vw;
-  font-size: $size-l;
-  color: $message-color;
-  background: $message-background-color;
+  height: $size-m;
+  font-size: $size-m;
   padding: $size-m;
-  display: flex;
-  align-items: center;
   margin: 0;
   margin-bottom: $size-m;
+  display: flex;
+  align-items: center;
 }

@@ -1,5 +1,5 @@
 .header {
-  background: $background-color;
+  background: lighten($background-color, 20%);
   color: white;
   margin-bottom: $size-m;
   padding: $size-m 0;

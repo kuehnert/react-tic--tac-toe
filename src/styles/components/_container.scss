@@ -1,5 +1,10 @@
 .container {
-  max-width: 80vw;
   margin: 0 auto;
   padding: 0 $size-m;
+}
+
+@media (min-width: $desktop-breakpoint) {
+  .container {
+    max-width: 80vw;
+  }
 }

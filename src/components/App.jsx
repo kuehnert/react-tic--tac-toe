@@ -71,14 +71,14 @@ class App extends React.Component {
   };
 
   render() {
-    const { gameState, tiles, message } = this.state;
+    const { currentPlayer, gameState, tiles, message } = this.state;
 
     return (
       <div>
         <Header title="Noughts and Crosses" />
 
         <div className="container">
-          <Message text={message} />
+          <Message text={message} currentPlayer={currentPlayer} />
 
           <GameGrid tiles={tiles} handleClick={this.checkTile} />
         </div>

@@ -9,13 +9,16 @@
 }
 
 .tile-neutral {
+  color: white;
   background-color: $neutral-color;
 }
 
 .tile-player1 {
+  color: darken($primary-color, 40%);
   background-color: $primary-color;
 }
 
 .tile-player2 {
+  color: darken($secondary-color, 40%);
   background-color: $secondary-color;
 }
