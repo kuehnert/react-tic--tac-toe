@@ -1,16 +1,24 @@
 import React from 'react';
-import Header from './Header';
+
 import GameGrid from './GameGrid';
+import Header from './Header';
 import Message from './Message';
+import WinningModal from './WinningModal';
+import playerLabel from '../utils/playerLabel'
 
 class App extends React.Component {
-  state = {
+  defaultState = JSON.stringify({
     tiles: Array(9).fill(0),
     currentPlayer: 1,
-    message: "Welcome to the game! It's player 1's turn.",
-  };
+    message: `Welcome to the game! It's player ${playerLabel(1)}'s turn.`,
+    winningCombination: null,
+    moveCounter: 0,
+    gameState: 0,
+  });
 
-  winningPositions = [
+  state = JSON.parse(this.defaultState);
+
+  winningCombinations = [
     // Horizontal
     [0, 1, 2],
     [3, 4, 5],
@@ -24,33 +32,46 @@ class App extends React.Component {
     [2, 4, 6],
   ];
 
+  handleNewGame = () => {
+    this.setState(JSON.parse(this.defaultState));
+  };
+
   hasWon = () => {
     const { tiles, currentPlayer } = this.state;
 
-    return this.winningPositions.some(combination => {
+    const winningCombination = this.winningCombinations.find(combination => {
       return combination.every(index => tiles[index] === currentPlayer);
     });
+
+    return winningCombination;
   };
 
   checkTile = index => {
-    let { tiles, currentPlayer } = this.state;
+    let { moveCounter, currentPlayer, tiles } = this.state;
 
     if (tiles[index] === 0) {
       tiles[index] = currentPlayer;
+      moveCounter += 1;
+      const winningCombination = this.hasWon();
 
-      if (this.hasWon()) {
-        const message = `Congratulations, player ${currentPlayer}, you have won!`;
-        this.setState({ message });
+      if (winningCombination) {
+        const message = `Congratulations, player ${playerLabel(currentPlayer)}, you have won!`;
+        const gameState = currentPlayer;
+        this.setState({ gameState, message, moveCounter, winningCombination });
+      } else if (moveCounter === 9) {
+        const message = `Oh dear, it's a tie!`;
+        const gameState = 3;
+        this.setState({ gameState, message, moveCounter });
       } else {
         currentPlayer = currentPlayer === 1 ? 2 : 1;
-        const message = `It's player ${currentPlayer}'s turn.`;
-        this.setState({ currentPlayer, message, tiles });
+        const message = `It's player ${playerLabel(currentPlayer)}'s turn.`;
+        this.setState({ currentPlayer, message, moveCounter, tiles });
       }
     }
   };
 
   render() {
-    const { tiles, message } = this.state;
+    const { gameState, tiles, message } = this.state;
 
     return (
       <div>
@@ -61,6 +82,8 @@ class App extends React.Component {
 
           <GameGrid tiles={tiles} handleClick={this.checkTile} />
         </div>
+
+        <WinningModal gameState={gameState} message={message} handleNewGame={this.handleNewGame} />
       </div>
     );
   }

@@ -1,7 +1,10 @@
-@import './theme';
-@import './base';
+@import './base/theme';
+@import './base/base';
+@import './components/app';
+@import './components/button';
 @import './components/container';
 @import './components/header';
 @import './components/gamegrid';
 @import './components/message';
+@import './components/modal';
 @import './components/tile';
