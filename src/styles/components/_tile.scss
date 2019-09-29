@@ -1,0 +1,21 @@
+.tile {
+  border: 6px solid $border-color;
+  border-radius: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: $size-tile-label;
+  margin: $size-s;
+}
+
+.tile-neutral {
+  background-color: $neutral-color;
+}
+
+.tile-player1 {
+  background-color: $primary-color;
+}
+
+.tile-player2 {
+  background-color: $secondary-color;
+}

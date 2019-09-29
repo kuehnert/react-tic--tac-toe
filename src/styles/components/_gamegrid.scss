@@ -1,0 +1,10 @@
+.gamegrid {
+  width: 75vw;
+  height: 75vw;
+  background-color: #444;
+  margin: 0;
+  padding: $size-s;
+  display: grid;
+  grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+  justify-items: stretch;
+}
