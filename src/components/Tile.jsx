@@ -1,15 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import playerLabel from '../utils/playerLabel'
-import backgroundColor from '../utils/backgroundColor'
+import playerLabel from '../utils/playerLabel';
+import backgroundColor from '../utils/backgroundColor';
+import { SwitchTransition } from 'react-transition-group';
+import FadeTransition from './FadeTransition';
 
 function Tile(props) {
   const { index, value } = props;
 
   return (
-    <div className={`tile tile${index} ${backgroundColor(value)}`} onClick={() => props.handleClick(index)}>
-      {playerLabel(value)}
-    </div>
+    <SwitchTransition>
+      <FadeTransition key={value}>
+        <div
+          className={`tile tile${index} ${backgroundColor(value)}`}
+          onClick={() => props.handleClick(index)}>
+          {playerLabel(value)}
+        </div>
+      </FadeTransition>
+    </SwitchTransition>
   );
 }
 

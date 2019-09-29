@@ -10,7 +10,7 @@ class App extends React.Component {
   defaultState = JSON.stringify({
     tiles: Array(9).fill(0),
     currentPlayer: 1,
-    message: `Welcome to the game! It's player ${playerLabel(1)}'s turn.`,
+    message: `Welcome to the game! It's Player ${playerLabel(1)}'s turn.`,
     winningCombination: null,
     moveCounter: 0,
     gameState: 0,
@@ -55,7 +55,7 @@ class App extends React.Component {
       const winningCombination = this.hasWon();
 
       if (winningCombination) {
-        const message = `Congratulations, player ${playerLabel(currentPlayer)}, you have won!`;
+        const message = `Congratulations, Player ${playerLabel(currentPlayer)}, you have won!`;
         const gameState = currentPlayer;
         this.setState({ gameState, message, moveCounter, winningCombination });
       } else if (moveCounter === 9) {
@@ -64,7 +64,7 @@ class App extends React.Component {
         this.setState({ gameState, message, moveCounter });
       } else {
         currentPlayer = currentPlayer === 1 ? 2 : 1;
-        const message = `It's player ${playerLabel(currentPlayer)}'s turn.`;
+        const message = `It's Player ${playerLabel(currentPlayer)}'s turn.`;
         this.setState({ currentPlayer, message, moveCounter, tiles });
       }
     }
